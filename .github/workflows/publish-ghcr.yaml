@@ -1,15 +1,15 @@
 name: Docker Image for GHCR
 
 on:
-    push
+  push
 
 jobs:
-    build_and_publish:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v3
-            - name: Build and Push the Image
-                run: |
-                    docker login --username appleboiy --password ${{ secret.CR_PAT }} ghcr.io
-                    docker build . --tag ghrc.io/appleboiy/hello-docker:latest
-                    docker push ghrc.io/appleboiy/hello-docker:latest
+  build_and_publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build and Push the Image
+        run: |
+          docker login --username appleboiy --password ${{ secrets.CR_PAT }} ghcr.io
+          docker build . --tag ghcr.io/appleboiy/hello-docker:latest
+          docker push ghcr.io/appleboiy/hello-docker:latest
